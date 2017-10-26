@@ -9,14 +9,19 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
-    <h1>Roman Numeral Converter</h1>
-    <form id="convertInput">
-      <div class="form-group">
-        <label for="numbers">Enter a number here.</label>
-        <input type="number">
+    <div class="container">
+      <h1>Roman Numeral Converter</h1>
+      <form id="convert-input">
+        <div class="form-group">
+          <label for="numbers">Enter a number here.</label>
+          <input type="number" id="number-input" max="3999" class="col-md-12">
+        </div>
+        <button type="submit" class="btn btn-info">Numeralize!</button>
+
+      </form>
+      <div id="numeral-output">
+
       </div>
-      <button type="submit" class="btn btn-info">Numeralize!</button>
-      
-    </form>
+    </div>
   </body>
 </html>
