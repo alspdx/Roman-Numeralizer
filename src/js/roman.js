@@ -3,7 +3,7 @@ var romanNumerals = {
   tenPosition: ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],
   hundredPosition: ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"],
   thousandPosition: ["", "M", "MM", "MMM"]
-}
+};
 
 romanNumerals.toInteger = function(stringArray) {
   var parsedInteger = [];
@@ -27,14 +27,18 @@ romanNumerals.converter = function(numArray) {
   convertedArray.unshift(romanNumerals.thousandPosition[thousandPositionNumber]);
   convertedNumbers = convertedArray.join("");
   return convertedNumbers;
-}
+};
 
 romanNumerals.romanNumeralizer = function(number) {
-  var romanNumeral = [];
-  var inputStringsArray = number.toString().split('');
-  var inputNumbersArray = romanNumerals.toInteger(inputStringsArray);
-  var output = romanNumerals.converter(inputNumbersArray);
-  return output;
+  if (number > 3999) {
+    return "There are no Roman Numerals higher than 3999, try again."
+  } else {
+    var romanNumeral = [];
+    var inputStringsArray = number.toString().split('');
+    var inputNumbersArray = romanNumerals.toInteger(inputStringsArray);
+    var output = romanNumerals.converter(inputNumbersArray);
+    return output;
+  }
 };
 
 exports.romanNumeralsModule = romanNumerals;
