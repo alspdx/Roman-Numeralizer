@@ -8,40 +8,34 @@ export class RomanNumerals {
   }
 
   toInteger(stringArray) {
-    var parsedInteger = [];
+    let parsedInteger = [];
     stringArray.forEach(function(string) {
-      var integer = parseInt(string);
-      parsedInteger.push(integer);
+      parsedInteger.push(parseInt(string));
     });
     return parsedInteger;
   }
 
   converter(numArray) {
-    var convertedArray = [];
-    var positions = ['one', 'ten', 'hundred', 'thousand'];
+    let convertedArray = [];
 
-    var onePositionNumber = numArray[numArray.length - 1];
-    var tenPositionNumber = numArray[numArray.length - 2];
-    var hundredPositionNumber = numArray[numArray.length - 3];
-    var thousandPositionNumber = numArray[numArray.length - 4];
+    const onePositionNumber = numArray[numArray.length - 1];
+    const tenPositionNumber = numArray[numArray.length - 2];
+    const hundredPositionNumber = numArray[numArray.length - 3];
+    const thousandPositionNumber = numArray[numArray.length - 4];
 
     convertedArray.unshift(this.one[onePositionNumber]);
     convertedArray.unshift(this.ten[tenPositionNumber]);
     convertedArray.unshift(this.hundred[hundredPositionNumber]);
     convertedArray.unshift(this.thousand[thousandPositionNumber]);
-    var convertedNumbers = convertedArray.join("");
-    return convertedNumbers;
+    
+    return convertedArray.join("");
   }
 
   numberCruncher(number) {
     if (number > 3999) {
       return "There are no Roman Numerals higher than 3999, try again.";
     } else {
-      var romanNumeral = [];
-      var inputStringsArray = number.toString().split('');
-      var inputNumbersArray = this.toInteger(inputStringsArray);
-      var output = this.converter(inputNumbersArray);
-      return output;
+      return this.converter(this.toInteger(number.toString().split('')));
     }
   }
 }
