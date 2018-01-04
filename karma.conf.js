@@ -22,6 +22,10 @@ module.exports = function(config) {
       'karma-safari-launcher',
       'karma-jasmine-html-reporter'
     ],
+    browserify: {
+      debug: true,
+      transform: [ [ 'babelify', {presets: ["es2015"]} ] ]
+    },
 
     reporters: ['progress', 'kjhtml', 'coverage'],
     port: 9876,

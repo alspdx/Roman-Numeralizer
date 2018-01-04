@@ -1,11 +1,12 @@
-var romanNumerals = require('./../src/js/roman.js').romanNumeralsModule;
+import { RomanNumerals } from './../src/js/roman.js';
 
 // User Interface Logic:
 $(function() {
   $("#convert-input").submit(function(event) {
     event.preventDefault();
+    var numeralizeIt = new RomanNumerals();
     var userInput = $("#number-input").val();
-    var output = romanNumerals.romanNumeralizer(userInput);
+    var output = numeralizeIt.numberCruncher(userInput);
     $("#numeral-output").text(output);
   });
 });
