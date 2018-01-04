@@ -14,6 +14,15 @@ romanNumerals.toInteger = function(stringArray) {
   return parsedInteger;
 };
 
+romanNumerals.somethingElse = function(stringArray) {
+  var parsedInteger = [];
+  stringArray.forEach(function(string) {
+    var integer = parseInt(string);
+    parsedInteger.push(integer);
+  });
+  return parsedInteger;
+};
+
 romanNumerals.converter = function(numArray) {
   var convertedArray = [];
   var onePositionNumber = numArray[numArray.length - 1];
