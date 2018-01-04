@@ -1,33 +1,21 @@
 export class RomanNumerals {
-
   constructor() {
-    this.one = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-    this.ten = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
-    this.hundred = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
-    this.thousand = ["", "M", "MM", "MMM"];
+    this.positions = [["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+                      ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],
+                      ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"],
+                      ["", "M", "MM", "MMM"]];
   }
 
   toInteger(stringArray) {
-    let parsedInteger = [];
-    stringArray.forEach(function(string) {
-      parsedInteger.push(parseInt(string));
-    });
-    return parsedInteger;
+    return stringArray.toString(10).split("").map(Number);
   }
 
   converter(numArray) {
     let convertedArray = [];
-
-    const onePositionNumber = numArray[numArray.length - 1];
-    const tenPositionNumber = numArray[numArray.length - 2];
-    const hundredPositionNumber = numArray[numArray.length - 3];
-    const thousandPositionNumber = numArray[numArray.length - 4];
-
-    convertedArray.unshift(this.one[onePositionNumber]);
-    convertedArray.unshift(this.ten[tenPositionNumber]);
-    convertedArray.unshift(this.hundred[hundredPositionNumber]);
-    convertedArray.unshift(this.thousand[thousandPositionNumber]);
-    
+    for (var i = 1; i < numArray.length; i++) {
+      const position = this.positions[i];
+      convertedArray.unshift(position[numArray[numArray.length - i]]);
+    }
     return convertedArray.join("");
   }
 
@@ -35,7 +23,7 @@ export class RomanNumerals {
     if (number > 3999) {
       return "There are no Roman Numerals higher than 3999, try again.";
     } else {
-      return this.converter(this.toInteger(number.toString().split('')));
+      return this.converter(this.toInteger(number));
     }
   }
 }
