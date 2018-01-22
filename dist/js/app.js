@@ -19,14 +19,14 @@ var RomanNumerals = exports.RomanNumerals = function () {
   _createClass(RomanNumerals, [{
     key: "toInteger",
     value: function toInteger(stringArray) {
-      return stringArray.toString(10).split("").map(Number);
+      return stringArray.split("").map(Number);
     }
   }, {
     key: "converter",
     value: function converter(numArray) {
       var convertedArray = [];
-      for (var i = 1; i < numArray.length; i++) {
-        var position = this.positions[i];
+      for (var i = 1; i <= numArray.length; i++) {
+        var position = this.positions[i - 1];
         convertedArray.unshift(position[numArray[numArray.length - i]]);
       }
       return convertedArray.join("");

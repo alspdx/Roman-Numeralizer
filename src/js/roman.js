@@ -7,13 +7,13 @@ export class RomanNumerals {
   }
 
   toInteger(stringArray) {
-    return stringArray.toString(10).split("").map(Number);
+    return stringArray.split("").map(Number);
   }
 
   converter(numArray) {
     let convertedArray = [];
-    for (var i = 1; i < numArray.length; i++) {
-      const position = this.positions[i];
+    for (var i = 1; i <= numArray.length; i++) {
+      const position = this.positions[i - 1];
       convertedArray.unshift(position[numArray[numArray.length - i]]);
     }
     return convertedArray.join("");
